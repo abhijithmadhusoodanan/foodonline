@@ -1,0 +1,13 @@
+{% autoescape off %}
+
+Hi Customer,
+
+Please click the below link for confirming your registration.
+
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+
+Thanks and Regards,
+FoodOnline Team
+
+{% endautoescape %}
