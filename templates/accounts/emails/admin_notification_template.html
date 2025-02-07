@@ -1,0 +1,18 @@
+{% autoescape off %}
+
+Hi {{user.vendor_name}},
+
+{% if is_approved %}
+
+Your restaurant has been approved by our team. You can now start adding menu items and manage orders.
+
+{% else %}
+
+Sorry ! Your restaurant application has been rejected. For more details you can contact us over foodonlinesupport@gmail.com
+
+{% endif %}
+
+Thanks and Regards,
+FoodOnline Team
+
+{% endautoescape %}
