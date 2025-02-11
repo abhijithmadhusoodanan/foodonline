@@ -1,5 +1,6 @@
 from django import forms
-from . models import User
+from . models import User,UserProfile
+from .validators import validate_image_extension
 
 class UserForm(forms.ModelForm):
   password=forms.CharField(widget=forms.PasswordInput)
@@ -17,3 +18,14 @@ class UserForm(forms.ModelForm):
       raise forms.ValidationError(
         "Password does not match"
       )
+
+class User_profile_form(forms.ModelForm):
+  profile_photo = forms.FileField(widget=forms.FileInput(attrs={'class': 'btn btn-info'}), validators = [validate_image_extension])
+  cover_photo = forms.FileField(widget=forms.FileInput(attrs={'class': 'btn btn-info'}), validators = [validate_image_extension])
+  latitude = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+  longitude = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+  address = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your address', 'required' : 'required'}))
+  class Meta:
+    model = UserProfile
+    fields = ['profile_photo','cover_photo','address','country','state','city','pin_code','latitude','longitude']
+

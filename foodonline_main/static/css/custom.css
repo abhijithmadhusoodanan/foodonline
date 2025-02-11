@@ -12,3 +12,9 @@
   animation-name: show-toast;
   animation-duration: 7s;
 }
+
+.btn.btn-info {
+  padding : 2px;
+  font-size: small;
+  cursor: pointer;
+}
