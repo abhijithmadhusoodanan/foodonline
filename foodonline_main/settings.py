@@ -65,7 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'accounts.context_processors.get_vendor'
+                'accounts.context_processors.get_vendor',
+                'accounts.context_processors.get_google_api_key',
             ],
         },
     },
@@ -151,3 +152,5 @@ EMAIL_HOST_USER = 'abhijithkapummal@gmail.com'
 EMAIL_HOST_PASSWORD = 'yzlk nawg moov spng'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'foodonline market place'
+
+GOOGLE_API_KEY = 'AIzaSyAxHLFay_GeCbZDvH4HOblJ8q6FJjtDWfo'
