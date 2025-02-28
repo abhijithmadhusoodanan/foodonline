@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="main-section">
+  <!-- include the cover photo here -->
+  {% include 'includes/cover_photo.html' %}
+
+  <div class="page-section account-header buyer-logged-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+          {% include 'includes/v_sidebar.html' %}
+
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <div class="user-dashboard loader-holder">
+            <div class="user-holder">
+
+              <h2>Build your Restaurant menu here</h2>
+              <!-- My Restaurants Form Start -->
+              <button class="btn btn-secondary btn-sm" onclick="history.back()"><i class="fa-solid fa-arrow-left mb-1"></i>&nbsp;Back</button>
+              <h6>Category: <span class="text-success font-weight-bold" > {{category}} </span>  </h6>
+              {% if food_items %}
+
+              <table class="table table-hover">
+
+                <tbody>
+                  {% for food in food_items %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td><img src="{{ food.image.url }}" alt="Food_image" width="40px"></td>
+                      <td class="font-weight-bold">{{food}}
+                        <small><p class="text-muted">{{food.description}}</p></small>
+                      </td>
+                      <td>
+                        <i class="fa-solid fa-edit"></i>&nbsp;&nbsp;<i class="fa-solid fa-trash text-danger mb-1"></i>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+                <h6 class=" text-center" >No food item found <br>
+                <a href="#" class="btn btn-success">
+                  <i class="fa-solid fa-plus"></i> Add food
+                </a></h6>
+              {% endif %}
+              <!-- My Restaurants Form End -->
+            </div>
+            </li>
+            </ul>
+            <div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main Section End -->
+{% include 'includes/alerts.html' %}
+{% endblock %}

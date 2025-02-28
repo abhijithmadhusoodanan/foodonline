@@ -51,6 +51,14 @@ function onPlaceChanged() {
       if (place.address_components[i].types[j] == 'administrative_area_level_1'){
         $('#id_state').val(place.address_components[i].long_name);
       }
+      //get city
+      if (place.address_components[i].types[j] == 'administrative_area_level_3'){
+        $('#id_city').val(place.address_components[i].long_name);
+      }
+      // get pin code
+      if (place.address_components[i].types[j] == 'postal_code'){
+        $('#id_pin_code').val(place.address_components[i].long_name);
+      }
   }
   }
 }

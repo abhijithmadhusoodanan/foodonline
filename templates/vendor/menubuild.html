@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="main-section">
+  <!-- include the cover photo here -->
+  {% include 'includes/cover_photo.html' %}
+
+  <div class="page-section account-header buyer-logged-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+          {% include 'includes/v_sidebar.html' %}
+
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <div class="user-dashboard loader-holder">
+            <div class="user-holder">
+
+              <h2>Build your Restaurant menu here</h2>
+              <!-- My Restaurants Form Start -->
+               <a href="{% url 'add_category' %}" class="btn btn-success float-right m-1"> <i class="fa-solid fa-plus"></i>Add category</a>
+               <a href="#" class="btn btn-success float-right m-1"> <i class="fa-solid fa-plus"></i> Add Food item</a>
+              <table class="table table-hover">
+
+                <tbody>
+                  {% for cat in categories %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>
+                        <a href="{% url 'menu_fooditems' cat.id %}"><p class="fw-bold" style="font-weight: 700;">{{cat}}</p></a>
+                        <small><p class="text-muted">{{cat.description}}</p></small>
+                      </td>
+                      <td>
+                        <a href="{% url 'edit_category' cat.id %}"><i class="fa-solid fa-edit" style="color: black;"></i></a>&nbsp;&nbsp;<a href="{% url 'delete_category' cat.id %}"><i class="fa-solid fa-trash text-danger mb-1" onclick= "return confirm('Do you really want to delete this category')"></i></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+
+                </tbody>
+              </table>
+              <!-- My Restaurants Form End -->
+            </div>
+            </li>
+            </ul>
+            <div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main Section End -->
+{% include 'includes/alerts.html' %}
+{% endblock %}
