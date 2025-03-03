@@ -20,20 +20,40 @@
           <div class="user-dashboard loader-holder">
             <div class="user-holder">
 
-              <h2>Add new category</h2>
+              <h2>Add new food item here</h2>
               <!-- Add category Form Start -->
                <button class="btn btn-secondary btn-sm" onclick="history.back()"><i class="fa-solid fa-arrow-left mb-1"></i>&nbsp;Back</button>
               <br><br>
-               <form action="{% url 'add_category' %}" method="POST">
+               <form action="{% url 'add_food' %}" method="POST" enctype="multipart/form-data">
                 {%csrf_token%}
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="field-holder">
-                    <label>Category *</label>{{form.category_name}}
+                    <label>Food item*</label>{{form.food_name}}
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="field-holder">
+                    <label>Category*</label>{{form.category_name}}
                   </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="field-holder">
                     <label>Description</label>{{form.description}}
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="field-holder">
+                    <label>Price *</label>{{form.price}}
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="field-holder">
+                    <label>Image *</label>{{form.image}}
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="field-holder">
+                    <label>Is_available</label>{{form.is_available}}
                   </div>
                 </div>
 

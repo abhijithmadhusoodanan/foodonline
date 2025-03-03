@@ -20,15 +20,20 @@
           <div class="user-dashboard loader-holder">
             <div class="user-holder">
 
-              <h2>Add new category</h2>
+              <h2>Modify your food item</h2>
               <!-- Add category Form Start -->
                <button class="btn btn-secondary btn-sm" onclick="history.back()"><i class="fa-solid fa-arrow-left mb-1"></i>&nbsp;Back</button>
-              <br><br>
-               <form action="{% url 'add_category' %}" method="POST">
+               <br><br>
+               <form action="{% url 'edit_food' food_item.id %}" method="POST" enctype="multipart/form-data">
                 {%csrf_token%}
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="field-holder">
-                    <label>Category *</label>{{form.category_name}}
+                    <label>Food item*</label>{{form.food_name}}
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="field-holder">
+                    <label>Category*</label>{{form.category_name}}
                   </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -36,6 +41,25 @@
                     <label>Description</label>{{form.description}}
                   </div>
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="field-holder">
+                    <label>Price *</label>{{form.price}}
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="field-holder">
+                    <label>Image *</label>{{form.image}}
+                    <br><br>
+                    <img src="{{ food_item.image.url }}" alt="food_image" width="50">
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="field-holder">
+                    <label>Is_available</label>{{form.is_available}}
+                  </div>
+                </div>
+
+
 
                 <!-- printing the errors -->
                  {% for field in form %}
@@ -49,9 +73,16 @@
 
                  {% endfor %}
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <div class="field-holder">
-                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-check"></i>Create</button>
+                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-check"></i>Update</button>
+                    <a class="btn btn-info"  href="{% url 'delete_food' food_item.id %}"><i class="fa-solid fa-trash btn btn-info text-danger"
+                        onclick="return confirm('Are you sure, you want to delete the food item?')"></i> &nbsp;Delete</a>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="field-holder">
+
                   </div>
                 </div>
 
